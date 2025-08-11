@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.feature-flags__container {
+    background-color: #d92b2b;
+    padding: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100dvh;
+}
+
+.feature-flags__container section {
+    background-color: #FAFAFA;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.feature-flags__container section div {
+    margin: 0.75rem 0;
+}
+
+.feature-flags__container section input {
+    padding: 0.5rem;
+}
