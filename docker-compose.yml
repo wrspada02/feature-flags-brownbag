@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: feature_flag_development
+    ports:
+      - "5432:5432"
