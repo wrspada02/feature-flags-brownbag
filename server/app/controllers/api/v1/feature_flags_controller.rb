@@ -1,6 +1,11 @@
 class Api::V1::FeatureFlagsController < ApplicationControllerApi
   def index
-    @feature_flags = FeatureFlag.all
+    if params[:name]
+      @feature_flags = FeatureFlag.where('name = ?', params[:name]).first
+    else
+      @feature_flags = FeatureFlag.all
+    end
+
     render json: @feature_flags
   end
 

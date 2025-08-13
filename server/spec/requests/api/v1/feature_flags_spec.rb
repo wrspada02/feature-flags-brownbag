@@ -13,6 +13,15 @@ RSpec.describe "Api::V1::FeatureFlags", type: :request do
       get "/api/v1/feature_flags"
       expect(response).to have_http_status(:ok)
     end
+
+    describe "with name param" do
+      it "returns the feature flag with the given name" do
+        FeatureFlag.create(name: "Feature 1", value: true)
+        FeatureFlag.create(name: "Feature 2", value: false)
+        get "/api/v1/feature_flags?name=Feature 1"
+        expect(response.parsed_body[:name]).to eq("Feature 1")
+      end
+    end
   end
 
   describe "GET /show" do
