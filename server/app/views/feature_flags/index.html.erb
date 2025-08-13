@@ -1,0 +1,18 @@
+<main class="feature-flags__container">
+  <section>
+    <p style="color: green"><%= notice %></p>
+    <h1>Feature flags</h1>
+
+    <div id="feature_flags">
+      <% @feature_flags.each do |feature_flag| %>
+        <%= render feature_flag %>
+        <p>
+          <%= link_to "Show this feature flag", feature_flag %>
+        </p>
+      <% end %>
+    </div>
+
+    <%= link_to "New feature flag", new_feature_flag_path %>
+  </section>
+
+</main>

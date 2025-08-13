@@ -1,0 +1,14 @@
+<main class="feature-flags__container">
+  <section>
+    <p style="color: green"><%= notice %></p>
+
+    <%= render @feature_flag %>
+
+    <div>
+      <%= link_to "Edit this feature flag", edit_feature_flag_path(@feature_flag) %> |
+      <%= link_to "Back to feature flags", feature_flags_path %>
+
+      <%= button_to "Destroy this feature flag", @feature_flag, method: :delete %>
+    </div>
+  </section>
+</main>
