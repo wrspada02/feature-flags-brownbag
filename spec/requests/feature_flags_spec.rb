@@ -18,11 +18,11 @@ RSpec.describe "/feature_flags", type: :request do
   # FeatureFlag. As you add validations to FeatureFlag, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "Feature 1", value: true }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: "", value: nil }
   }
 
   describe "GET /index" do
@@ -87,14 +87,15 @@ RSpec.describe "/feature_flags", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: "Feature 1", value: false }
       }
 
-      it "updates the requested feature_flag" do
+      it "updates the requested feature_flag", :aggregate_failures do
         feature_flag = FeatureFlag.create! valid_attributes
         patch feature_flag_url(feature_flag), params: { feature_flag: new_attributes }
         feature_flag.reload
-        skip("Add assertions for updated state")
+        expect(feature_flag.name).to eq("Feature 1")
+        expect(feature_flag.value).to eq(false)
       end
 
       it "redirects to the feature_flag" do

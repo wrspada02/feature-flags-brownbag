@@ -7,6 +7,9 @@ class Api::V1::FeatureFlagsController < ApplicationControllerApi
   def show
     @feature_flag = FeatureFlag.find(params[:id])
     render json: @feature_flag
+
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Feature flag not found" }, status: :not_found
   end
 
   def create
@@ -31,6 +34,9 @@ class Api::V1::FeatureFlagsController < ApplicationControllerApi
     @feature_flag = FeatureFlag.find(params[:id])
     @feature_flag.destroy
     head :no_content
+
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Feature flag not found" }, status: :not_found
   end
 
   private
