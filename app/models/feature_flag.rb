@@ -1,4 +1,4 @@
 class FeatureFlag < ApplicationRecord
-  validates :name, :value, presence: true
+  validates :name, presence: true
   validates :value, inclusion: { in: [true, false] }
 end
